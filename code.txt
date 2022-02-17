@@ -1,0 +1,136 @@
+if (id > 0 && name == null && active == null && email == null && location == null) //Users ONLY with specific ID with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Id == id)
+                    .OrderBy(p => p.Name)
+                    .ToList();
+                
+            }
+
+            else if (id == 0 && name == null && email == null && active == null && location != null) //Users ONLY with specific LOCATION with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Location == location)
+                    .OrderBy(p => p.Name)
+                    .ToList();
+            }
+
+            else if (id == 0 && name == null && active == null && email != null && location == null) //Users ONLY with specific EMAIL with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Email.Contains(email))
+                    .OrderBy(p => p.Name)
+                    .ToList();
+                
+            }
+
+            else if (id > 0 && name == null && active == null && email != null && location == null) //Users ONLY with specific EMAIL, ID with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Id == id && p.Email.Contains(email))
+                    .OrderBy(p => p.Name)
+                    .ToList();
+            }
+
+            else if (id == 0 && name != null && active == null && email != null && location == null) //Users ONLY with specific EMAIL, Name with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Name.Contains(name) && p.Email.Contains(email))
+                    .OrderBy(p => p.Name)
+                    .ToList();
+            }
+
+            else if (id > 0 && name != null && active == null && email != null && location == null) //Users ONLY with specific EMAIL, Name, ID with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                     .Where(p => p.Name.Contains(name) && p.Email.Contains(email) && p.Id == id)
+                    .OrderBy(p => p.Name)
+                    .ToList();
+            }
+
+            else if (name != null && id == 0 && active == null && email == null && location == null) //Users ONLY with specific NAME with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                    .Where(p => p.Name.Contains(name))
+                    .OrderBy(p => p.Name)
+                    .ToList();
+                
+            }
+            else if (name != null && id > 0 && active == null && email == null && location == null) //Users ONLY with specific ID, NAME with ANY ACTIVE STATUS
+            {
+                return _ctx.Users
+                    .Where(p => p.Name.Contains(name) && p.Id == id)
+                    .OrderBy(p => p.Name)
+                    .ToList();
+            }
+
+            if (active != null) //Users with specific ACTIVE
+            {
+                if (name == null && id > 0 && email == null && location == null) //Users ONLY with specific Active, ID
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Id == id)
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+                else if (name == null && id == 0 && email != null && location == null) //Users ONLY with specific Active, EMAIL
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Email.Contains(email))
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+                else if (name == null && id > 0 && email != null && location == null) //Users ONLY with specific Active, EMAIL, ID
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Email.Contains(email) && p.Id == id)
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+                else if (name != null && id == 0 && email != null && location == null) //Users ONLY with specific Active, EMAIL, Name
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Email.Contains(email) && p.Name.Contains(name))
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+                else if (name != null && id > 0 && email != null && location == null) //Users ONLY with specific Active, EMAIL, Name, ID
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Email.Contains(email) && p.Name.Contains(name) && p.Id == id)
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+
+                else if (name !=null && id == 0 && email == null && location == null) //Users ONLY with specific Active, Name
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Name.Contains(name))
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+
+                else if (name !=null && id > 0 && email == null && location == null) //Users ONLY with specific Active, Name, ID
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active && p.Name.Contains(name) && p.Id == id)
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+                else //Users ONLY with specific ACTIVE
+                {
+                    return _ctx.Users
+                        .Where(p => p.isActive.ToString() == active)
+                        .OrderBy(p => p.Name)
+                        .ToList();
+                }
+            }
+            
+
+            else
+            {
+                return _ctx.Users
+                    .OrderBy(p => p.Name)
+                    .ToList();
+                Debug.WriteLine("id=" + id.ToString() + " name=" + name);
+            }

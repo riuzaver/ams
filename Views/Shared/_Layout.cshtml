@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+    <title>Finstek - AMS: @ViewBag.Title</title>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="~/css/style.css" />
+<link rel="stylesheet" href="~/css/loader.css" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div class="head">
+    <div class="logo">
+  <img src="~/img/logo.png" />
+  <p>Access</p>
+  <p>Management</p>
+  <p>System</p>
+  <p>Finstek</p>
+ </div>
+ <menu>
+     <ul>
+         <li><a href="/" @(ViewContext.RouteData.Values["action"].ToString().Equals("Index") ? "class=menu_selected" : "")>Home</a></li>
+         <li><a href="/users" @(ViewContext.RouteData.Values["action"].ToString().Equals("Users") ? "class=menu_selected" : "")>Users</a></li>
+         <li><a href="/services" @(ViewContext.RouteData.Values["action"].ToString().Equals("Services") ? "class=menu_selected" : "")>Services</a></li>
+     </ul>
+ </menu>
+</div>
+<div class="main">
+@RenderBody()
+</div>
+
+<div class="footer">
+    <h2>Access Management System v0.1 (c) finstek.com</h2>
+</div>
+
+</body>
+
+</html>

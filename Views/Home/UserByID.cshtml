@@ -1,0 +1,77 @@
+﻿@model User
+
+
+
+
+<div class="user_profile" id="user_profile">
+
+
+
+<div class="user_info">
+<div class="user_profile_main_title">
+<p class="">@Model.Name</p>
+<div @(Model.isActive == true ? "class=userIsActiveTrue" : "class=userIsActiveFalse") id="user_active">@(Model.isActive == true ? "Active" : "Inactive")</div>
+</div>
+
+<div class="user_profile_actions">
+<p class="user_profile_buttons_title">Actions</p>
+<div class="user_profile_buttons">
+<form class="user_profile_buttons_form">
+<div class="user_edit_link"><a href="#" id="user_edit_button">Edit</a></div>
+<div  @(Model.isActive == true ? "class=user_active_true_link" : "class=user_active_false_link")><a href="#" id="user_active_change_button">@(Model.isActive == true ? "Make 'Inactive'" : "Make 'Active'")</a></div>
+<div class="user_delete_link"><a href="#" id="user_delete_button">Delete</a></div>
+
+</form>
+
+</div>
+</div>
+
+<div class="user_info_details">
+<p class="user_info_header">Details</p>
+<form class="user_info_form">
+<div class="user_info_edit_status" id="user_info_edit_status"></div>
+<div class="user_info_block">
+    <label>ID:</label>
+    <input id="user_id" readonly value="@Model.Id"/>
+</div>
+
+<div class="user_info_block">
+    <label>Name:</label>
+    <input id="user_name" placeholder="John Doe (required)" readonly value="@Model.Name"/>
+</div>
+<div class="user_info_block">
+    <label>E-mail:</label>
+    <input id="user_email" placeholder="john.doe@finstek.com (required)" readonly value="@Model.Email" />
+</div>
+<div class="user_info_block">
+    <label>Location:</label>
+    <input id="user_location" readonly placeholder="BY (required)" value="@Model.Location" />
+</div>
+<div class="user_info_block_buttons" id="user_info_block_buttons">
+
+</div>
+
+ </form>
+</div>
+
+</div>
+
+<script src="~/js/del_user.js"></script>
+<script src="~/js/edit_user.js"></script>
+
+<div class="user_accesses">
+<h2>User accesses:</h2>
+
+<div class="table_block" id="users_table"></div>
+</div>
+
+
+</div>
+<div id="dialog" title="Delete user?">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float:left;">
+
+      </span>This user will be deleted permanently.</p>
+</div>
+<script src="~/js/get_accesses.js"></script>
+

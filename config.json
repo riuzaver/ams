@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "AmsContextDb": "Data Source=sql-ukw-ams.database.windows.net;Initial Catalog=sqldb-ukw-ams;User ID=finstek_admin;Password=8e95a5cF12; MultipleActiveResultSets=true;"
+  }
+}

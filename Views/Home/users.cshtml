@@ -1,0 +1,67 @@
+﻿@model IEnumerable<User>
+<p class="users_count">Users (@Model.Count())</p>
+
+
+<div class="search_user_area">
+<p class="search_user_area_header">Actions</p>
+<form class="search_user_area_form">
+<div class="user_add_link"><a href="users/add">Add User</a></div>
+</form>
+</div>
+
+<div class="search_user_area">
+<p class="search_user_area_header">Search</p>
+<form class="search_user_area_form">
+<div class = "search_user_area_block">
+    <label>ID:</label>
+    <input type ="number" placeholder="5" onkeydown="return event.keyCode !== 69 && event.keyCode !== 189" pattern="\d*" min="1" step="1" id="search_user_id" />
+</div>
+<div>
+    <label>Name:</label>
+    <input id="search_user_name" placeholder="John Doe" />
+</div>
+<div>
+    <label>E-Mail:</label>
+    <input id="search_user_email" placeholder="john.doe@finstek.com" />
+</div>
+    <div>
+    <label>Location:</label>
+    <input id="search_user_location" placeholder="BY" />
+</div>
+<div>
+    <label>Active Status:</label>
+    <select id="search_user_active" name="search_user_active">
+        <option value="All">All</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select>
+</div>
+</form>
+
+</div>
+<script src="~/js/get_users.js"></script>
+
+<div class="table_block" id="users_table">
+
+ <table class="table_users" cellpadding="4" cellspacing="0">
+   <tr>
+     <td align="center">ID</td>
+     <td align="center">Active?</td>
+     <td    align="center">Name</td>
+     <td   align="center">E-mail</td>
+     <td   align="center">Location</td>
+     <td   align="center">Action</td>
+   </tr>
+   @foreach (var p in Model){
+   <tr class="table_item">
+     <td align="center"><div class="user_id_circle">@p.Id</div></td>
+     <td align="center"><div @(p.isActive == true ? "class=userIsActiveTrue" : "class=userIsActiveFalse")>@p.isActive</div></td>
+     <td align="center">@p.Name</td>
+     <td align="center">@p.Email</td>
+     <td align="center">@p.Location</td>
+     <td align="center"><div class="users_action_links"><div class="user_info_link"><a href="/users/@p.Id/">View</a> </div></div></td>
+   </tr>
+   }
+  </table> 
+
+</div>

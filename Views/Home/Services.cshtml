@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Service>
+<h1>Services (@Model.Count())</h1>
+<button class="btn btn-success">Add Service</button>
+
+<div class="table_block">
+
+ <table class="table_users" cellpadding="4" cellspacing="0">
+   <tr>
+     <td    align="center">ID</td>
+     <td    align="center">Name</td>
+     <td   align="center">Url</td>
+     <td   align="center">Action</td>
+   </tr>
+   @foreach (var p in Model){
+   <tr class="table_item">
+     <td align="center">@p.Id</td>
+     <td align="center">@p.Name</td>
+     <td align="center">@p.url</td>
+     <td align="center"><button class="btn btn-primary">Edit</button></td>
+   </tr>
+   }
+  </table> 
+
+</div>
